@@ -1,0 +1,7 @@
+mkdir hive
+npx create-react-app {name} vite@latest  --template typescript
+cd hive 
+npm install 
+npm run dev
+npm install -D postcss autoprefixer
+npm install -D tailwindcss
