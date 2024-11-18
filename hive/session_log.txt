@@ -1,0 +1,31 @@
+Script started on Wed Nov 13 00:12:22 2024
+[1m[7m%[27m[1m[0m                                                                                                          [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004hlls -alt[?2004l
+total 400
+-rw-r--r--@   1 will  staff    1250 Nov 13 00:12 session_log.txt
+drwxr-xr-x@  19 will  staff     608 Nov 13 00:11 .
+-rw-r--r--@   1 will  staff  151277 Nov  9 18:13 package-lock.json
+-rw-r--r--@   1 will  staff     821 Nov  9 18:13 package.json
+-rw-r--r--@   1 will  staff     173 Nov  9 18:13 declarations.d.ts
+drwxr-xr-x@ 210 will  staff    6720 Nov  9 18:13 node_modules
+drwxr-xr-x@   9 will  staff     288 Nov  9 18:11 src
+drwxr-xr-x    5 will  staff     160 Nov  9 18:05 ..
+-rw-r--r--@   1 will  staff     628 Nov  9 09:12 tsconfig.node.json
+-rw-r--r--@   1 will  staff     762 Nov  9 09:12 tailwind.config.js
+-rw-r--r--@   1 will  staff      80 Nov  9 09:07 postcss.config.js
+-rw-r--r--@   1 will  staff     161 Nov  9 09:06 vite.config.ts
+-rw-r--r--@   1 will  staff     119 Nov  9 09:06 tsconfig.json
+-rw-r--r--@   1 will  staff     665 Nov  9 09:06 tsconfig.app.json
+drwxr-xr-x@   3 will  staff      96 Nov  9 09:06 public
+-rw-r--r--@   1 will  staff     366 Nov  9 09:06 index.html
+-rw-r--r--@   1 will  staff     734 Nov  9 09:06 eslint.config.js
+-rw-r--r--@   1 will  staff     253 Nov  9 09:06 .gitignore
+-rw-r--r--@   1 will  staff    1607 Nov  9 09:06 README.md
+[1m[7m%[27m[1m[0m                                                                                                          [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004hppwd[?2004l
+/Users/will/Projects/codomatic/frontend/hive
+[1m[7m%[27m[1m[0m                                                                                                          [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004h[7mcd hive [27m[8D[27mc[27md[27m [27mh[27mi[27mv[27me[27m      mona[?2004l
+cd: no such file or directory: mona
+[1m[7m%[27m[1m[0m                                                                                                          [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004hcd monapwd    ls -alt/usr/bin/python3 /Users/will/.cursor/extensions/ms-python.python-2024.12.3-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/will/.cursor/extensions/ms-python.python-2024.12.3-darwin-arm64/python_files/deactivate/zsh/envVars.txt[K[A[A[26Dopenai migrate[K[1B[K[1B[K[A[A[41C[14Dcd tutorials                                     [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004hppwd[?2004l
+/Users/will/Projects/codomatic/frontend/hive
+[1m[7m%[27m[1m[0m                                                                                                          [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004h[7mcd hive [27m[8D[27mc[27md[27m [27mh[27mi[27mv[27me[27m      mona[?2004l
+cd: no such file or directory: mona
+[1m[7m%[27m[1m[0m                                                                                                          [0m[27m[24m[Jwill@Williams-Air-2 hive % [K[?2004hcd monapwd    ls -alt/usr/bin/python3 /Users/will/.cursor/extensions/ms-python.python-2024.12.3-darwin-arm64/python_files/printEnvVariablesToFile.py /Users/will/.cursor/extensions/ms-python.python-2024.12.3-darwin-arm64/python_files/deactivate/zsh/envVars.txt[K[A[A[26Dopenai migrate[K[1B[K[1B[K[A[A[41C[14Dcd tutorials  

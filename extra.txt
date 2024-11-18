@@ -5,3 +5,12 @@ npm install
 npm run dev
 npm install -D postcss autoprefixer
 npm install -D tailwindcss
+
+# Update the tsconfig.json
+# Update the index.css
+# Install other dependencies that are specified. (Core and extra)
+
+Create folders. 
+Create files. 
+developer (codes files, considers routing, ) - ui -> coded files with ui
+dev debugs etc. 
