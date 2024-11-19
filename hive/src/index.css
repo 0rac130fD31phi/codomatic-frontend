@@ -19,3 +19,71 @@ body {
     background: linear-gradient(to bottom, rgb(17 24 39), rgb(0 0 0));
   }
 }
+/* Add to your global CSS */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin 30s linear infinite;
+}
+
+/* Add these to your global CSS */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slower {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin-slower 30s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
