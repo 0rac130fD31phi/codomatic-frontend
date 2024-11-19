@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Settings, X } from 'lucide-react';
 
-import themes from './themes';
+import themes from './types/themes';
 type ThemeSelectorProps = {
   currentTheme: string;
   onThemeChange: (theme: string) => void;
