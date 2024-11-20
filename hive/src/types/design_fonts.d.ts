@@ -1,7 +1,7 @@
-// src/types/font.ts
+// src/types/design_fonts.d.ts
 
-export type FontWeight =
-  | '100' | '200' | '300' | '400' | '500'
+export type FontWeight = 
+  | '100' | '200' | '300' | '400' | '500' 
   | '600' | '700' | '800' | '900';
 
 export type FontStyle = 'normal' | 'italic';
@@ -11,10 +11,10 @@ export type FontCategory = 'sans' | 'serif' | 'mono' | 'display';
 export interface FontVariant {
   weight: FontWeight;
   style: FontStyle;
-  src: string;  // URL or path to the font file
+  src: string;
 }
 
-export interface Font {
+export interface DesignFont {
   id: string;
   name: string;
   category: FontCategory;
@@ -37,24 +37,24 @@ export interface Font {
 export interface FontPairing {
   id: string;
   name: string;
-  heading: Font;
-  body: Font;
+  heading: DesignFont;
+  body: DesignFont;
   description?: string;
 }
 
 export interface FontSettings {
   primary: {
-    font: Font;
+    font: DesignFont;
     weight: FontWeight;
     style: FontStyle;
   };
   heading: {
-    font: Font;
+    font: DesignFont;
     weight: FontWeight;
     style: FontStyle;
   };
   mono: {
-    font: Font;
+    font: DesignFont;
     weight: FontWeight;
     style: FontStyle;
   };

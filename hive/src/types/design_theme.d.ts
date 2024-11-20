@@ -1,6 +1,4 @@
-// src/types/theme.ts
-
-import { FontSettings } from './font';
+// src/types/design_theme.d.ts
 
 export type ColorShade = {
   light: string;
@@ -38,25 +36,22 @@ export type TextStyles = {
   warning: string;
 };
 
-export interface Theme {
+export interface DesignTheme {
   id: string;
   name: string;
   author?: string;
   description?: string;
-
+  
   // Colors
   bgPrimary: string;
   accent: ColorShade;
-
-  // Fonts
-  fontSettings: FontSettings;  // Link to the FontSettings type defined in font.ts
-
+  
   // Text
   text: TextStyles;
-
+  
   // Surfaces
   surfaces: Surfaces;
-
+  
   // Borders
   border: {
     color: string;
@@ -65,10 +60,10 @@ export interface Theme {
     width: string;
     radius: string;
   };
-
+  
   // Gradient configurations
   gradient?: GradientConfig;
-
+  
   // Shadows
   shadow: {
     sm: string;
@@ -76,7 +71,7 @@ export interface Theme {
     lg: string;
     focus: string;
   };
-
+  
   // States
   states: {
     hover: string;

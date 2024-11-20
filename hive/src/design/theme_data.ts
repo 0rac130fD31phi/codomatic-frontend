@@ -1,0 +1,105 @@
+// src/themes/theme-data.ts
+import type { DesignTheme } from '../types/design_theme';
+
+export const themes: Record<string, DesignTheme> = {
+  cyber: {
+    id: 'cyber',
+    name: 'Cyber',
+    bgPrimary: 'bg-gray-900',
+    accent: {
+      light: 'text-teal-300',
+      DEFAULT: 'text-teal-400',
+      dark: 'text-teal-500',
+    },
+    text: {
+      primary: 'text-gray-50',
+      secondary: 'text-gray-400',
+      tertiary: 'text-gray-500',
+      accent: 'text-teal-400',
+      error: 'text-red-400',
+      success: 'text-green-400',
+      warning: 'text-yellow-400',
+    },
+    surfaces: {
+      primary: 'bg-gray-900',
+      secondary: 'bg-gray-800',
+      tertiary: 'bg-gray-700',
+      elevated: 'bg-gray-800',
+      interactive: 'bg-gray-700',
+      hover: 'bg-gray-600',
+      active: 'bg-gray-500',
+    },
+    border: {
+      color: 'border-gray-700',
+      hover: 'border-gray-600',
+      active: 'border-gray-500',
+      width: 'border',
+      radius: 'rounded-lg',
+    },
+    gradient: {
+      enabled: true,
+      from: 'from-teal-400',
+      to: 'to-blue-500',
+      direction: 'to-r',
+    },
+    shadow: {
+      sm: 'shadow-sm',
+      DEFAULT: 'shadow',
+      lg: 'shadow-lg',
+      focus: 'ring-2 ring-teal-500/50',
+    },
+    states: {
+      hover: 'hover:bg-gray-700',
+      focus: 'focus:ring-2 focus:ring-teal-500/50',
+      active: 'active:bg-gray-600',
+      disabled: 'opacity-50 cursor-not-allowed',
+    },
+  },
+  minimal: {
+    id: 'minimal',
+    name: 'Minimal',
+    bgPrimary: 'bg-white',
+    accent: {
+      light: 'text-blue-300',
+      DEFAULT: 'text-blue-500',
+      dark: 'text-blue-700',
+    },
+    text: {
+      primary: 'text-gray-900',
+      secondary: 'text-gray-600',
+      tertiary: 'text-gray-400',
+      accent: 'text-blue-500',
+      error: 'text-red-500',
+      success: 'text-green-500',
+      warning: 'text-yellow-500',
+    },
+    surfaces: {
+      primary: 'bg-white',
+      secondary: 'bg-gray-50',
+      tertiary: 'bg-gray-100',
+      elevated: 'bg-white',
+      interactive: 'bg-gray-50',
+      hover: 'bg-gray-100',
+      active: 'bg-gray-200',
+    },
+    border: {
+      color: 'border-gray-200',
+      hover: 'border-gray-300',
+      active: 'border-gray-400',
+      width: 'border',
+      radius: 'rounded-lg',
+    },
+    shadow: {
+      sm: 'shadow-sm',
+      DEFAULT: 'shadow',
+      lg: 'shadow-lg',
+      focus: 'ring-2 ring-blue-500/50',
+    },
+    states: {
+      hover: 'hover:bg-gray-50',
+      focus: 'focus:ring-2 focus:ring-blue-500/50',
+      active: 'active:bg-gray-100',
+      disabled: 'opacity-50 cursor-not-allowed',
+    },
+  },
+};

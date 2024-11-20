@@ -1,122 +1,73 @@
-// src/context/ThemeContext.tsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import themes from '@/types/themes';
-import type { Theme } from '@/types/theme';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { themes } from '../design/theme_data';
+import { DesignTheme } from '../types/design_theme';
 
+// Define the context type
 interface ThemeContextType {
   currentTheme: string;
-  theme: Theme;
+  theme: DesignTheme;
   setTheme: (theme: string) => void;
   isGradientEnabled: boolean;
   toggleGradient: () => void;
+  isCustomizable: boolean;
 }
 
+// Create the context
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Default theme key
+const DEFAULT_THEME = 'cyber'; // Replace with your actual default theme key
+
+// Theme Provider component
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Load theme from localStorage or default to 'cyber'
-  const [currentTheme, setCurrentTheme] = useState(() => {
+  // State: current theme
+  const [currentTheme, setCurrentTheme] = useState<string>(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'cyber';
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme && themes[savedTheme] ? savedTheme : DEFAULT_THEME;
     }
-    return 'cyber';
+    return DEFAULT_THEME;
   });
 
-  const [isGradientEnabled, setIsGradientEnabled] = useState(() => {
+  // State: gradient enabled
+  const [isGradientEnabled, setIsGradientEnabled] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('gradientEnabled') !== 'false';
     }
     return true;
   });
 
+  // Sync state with local storage
   useEffect(() => {
     localStorage.setItem('theme', currentTheme);
-  }, [currentTheme]);
-
-  useEffect(() => {
     localStorage.setItem('gradientEnabled', String(isGradientEnabled));
-  }, [isGradientEnabled]);
+  }, [currentTheme, isGradientEnabled]);
 
-  const value = {
+  // Context value
+  const value: ThemeContextType = {
     currentTheme,
-    theme: themes[currentTheme],
-    setTheme: setCurrentTheme,
+    theme: themes[currentTheme] || themes[DEFAULT_THEME], // Fallback to default theme
+    setTheme: (theme) => {
+      if (themes[theme]) {
+        setCurrentTheme(theme);
+      } else {
+        console.warn(`Invalid theme key: "${theme}". Falling back to default.`);
+        setCurrentTheme(DEFAULT_THEME);
+      }
+    },
     isGradientEnabled,
-    toggleGradient: () => setIsGradientEnabled(prev => !prev)
+    toggleGradient: () => setIsGradientEnabled((prev) => !prev),
+    isCustomizable: true,
   };
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
+// Hook to access the theme context
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
-};
-
-// src/context/FontContext.tsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { fonts } from '@/config/fonts';
-
-interface FontSettings {
-  sans: string;
-  mono: string;
-}
-
-interface FontContextType {
-  currentFont: FontSettings;
-  setFont: (category: 'sans' | 'mono', value: string) => void;
-  fonts: typeof fonts;
-}
-
-const FontContext = createContext<FontContextType | undefined>(undefined);
-
-export const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentFont, setCurrentFont] = useState<FontSettings>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('fontSettings');
-      if (saved) {
-        return JSON.parse(saved);
-      }
-    }
-    return {
-      sans: 'font-inter',
-      mono: 'font-jetbrains'
-    };
-  });
-
-  useEffect(() => {
-    localStorage.setItem('fontSettings', JSON.stringify(currentFont));
-  }, [currentFont]);
-
-  const value = {
-    currentFont,
-    setFont: (category: 'sans' | 'mono', value: string) => {
-      setCurrentFont(prev => ({
-        ...prev,
-        [category]: value
-      }));
-    },
-    fonts
-  };
-
-  return (
-    <FontContext.Provider value={value}>
-      {children}
-    </FontContext.Provider>
-  );
-};
-
-export const useFont = () => {
-  const context = useContext(FontContext);
-  if (context === undefined) {
-    throw new Error('useFont must be used within a FontProvider');
   }
   return context;
 };

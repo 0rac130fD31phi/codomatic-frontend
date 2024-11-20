@@ -1,12 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-//import PremiumHero from './PremiumHero.tsx'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App';
+//import { AuthProvider } from './contexts/AuthContext';
+//import { WalletProvider } from './contexts/WalletContext';
 
-import LandingVariants from '../Archive/LandingVariants.tsx'
+const container = document.getElementById('root');
+const root = createRoot(container!);
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <LandingVariants />
-  </StrictMode>,
-)
+root.render(
+  <React.StrictMode>
+        <App />
+  </React.StrictMode>
+);
