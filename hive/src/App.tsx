@@ -13,6 +13,7 @@ import { FontProvider } from './contexts/FontContext';  // Import the FontProvid
 import LandingPage from './pages/LandingPage2';
 import { ThemeSelector } from './components/shared/design/ThemeSelector';
 import { FontSelector } from './components/shared/design/FontSelector';
+import HaiveCommand from './pages/showcase';
 
 const App: React.FC = () => {
   return (
@@ -21,7 +22,8 @@ const App: React.FC = () => {
         <ThemeSelector />
         <FontSelector />
         <div>
-          <LandingPage />
+          {/*<LandingPage />*/}
+          <HaiveCommand />
         </div>
        </FontProvider>
     </ThemeProvider>

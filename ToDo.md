@@ -1,0 +1,14 @@
+- check claude convo for desing selector, theme: https://claude.ai/chat/722eb7f0-f311-47a6-b119-422850c7eeb0
+- Naming consistentcy, convention style for theme and font types, selectors, contexts, etc.
+- Index, app split ith context providers
+- Error boundary INtegration
+- Routing for landing page, docs, blog, etc.
+- Layout config
+- Rename Fonts/FontSelectors etc. 
+- Organizing error boundary, protected routes,
+- routing
+- providers
+- context
+- hooks
+- components
+- pages
