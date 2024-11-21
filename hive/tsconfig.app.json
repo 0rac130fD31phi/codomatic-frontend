@@ -20,7 +20,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src", "Archive/HaiveLanding copy.tsx", "Archive/haive.tsx", "Archive/DynamicLandingPage.tsx", "Archive/HaiveLanding.tsx", "Archive/Hero.tsx", "Archive/hero3.tsx", "Archive/App2.tsx", "Archive/test_3.tsx", "Archive/PremiumHero.tsx", "Archive/LandingVariants.tsx", "Archive/LandingVariant.tsx", "Archive/LandingPage2.tsx", "Archive/LandingPage.tsx", "Archive/Landing3.tsx"]
 }

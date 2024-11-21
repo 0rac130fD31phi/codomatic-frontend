@@ -246,12 +246,7 @@ const HaiveProjectCreation = () => {
         <div 
           className={`p-6 rounded-xl ${theme.surfaces.primary} border ${theme.border.color}`}
         >
-          <h3 className={`text-lg mb-4 ${theme.text.primary}`} style={{ 
-                  color: theme.text.secondary, 
-                  fontFamily: fontSettings.heading.font.name,
-                  fontWeight: fontSettings.heading.weight,
-                  fontStyle: fontSettings.heading.style
-                }}>
+          <h3 className={`text-lg mb-4 ${theme.text.primary}`} >
             Project Summary
           </h3>
           

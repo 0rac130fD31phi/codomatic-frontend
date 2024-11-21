@@ -1,4 +1,3 @@
-// src/contexts/FontContext.tsx
 import { createContext, useState, useEffect, useContext } from 'react';
 import { fonts } from '../design/font_data';
 import type { FontSettings, DesignFont, FontWeight, FontStyle } from '../types/design_fonts';
@@ -12,27 +11,60 @@ interface FontContextType {
     weight?: FontWeight,
     style?: FontStyle
   ) => void;
-  fonts: Record<string, DesignFont[]>;
+  fonts: Record<string, DesignFont>;
 }
 
 const defaultSettings: FontSettings = {
   primary: {
-    font: fonts.inter,
+    font: fonts.inter || {
+      id: 'default',
+      name: 'Default Sans',
+      category: 'sans',
+      variants: [],
+      fallback: 'sans-serif',
+      preview: {
+        text: 'Default Sans Preview',
+        sizes: [16, 18, 20],
+      },
+      recommended: { body: '400' },
+    },
     weight: '400',
-    style: 'normal'
+    style: 'normal',
   },
   heading: {
-    font: fonts.inter,
+    font: fonts.inter || {
+      id: 'default-heading',
+      name: 'Default Heading',
+      category: 'sans',
+      variants: [],
+      fallback: 'sans-serif',
+      preview: {
+        text: 'Default Heading Preview',
+        sizes: [24, 28, 32],
+      },
+      recommended: { heading: '600' },
+    },
     weight: '600',
-    style: 'normal'
+    style: 'normal',
   },
   mono: {
-    font: fonts.robotoMono,
+    font: fonts.roboto || {
+      id: 'default-mono',
+      name: 'Default Mono',
+      category: 'mono',
+      variants: [],
+      fallback: 'monospace',
+      preview: {
+        text: 'const code = true;',
+        sizes: [14, 16, 18],
+      },
+      recommended: { code: '400' },
+    },
     weight: '400',
-    style: 'normal'
+    style: 'normal',
   },
   scale: 1,
-  smoothing: true
+  smoothing: true,
 };
 
 const FontContext = createContext<FontContextType | undefined>(undefined);
@@ -42,14 +74,22 @@ export const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('fontSettings');
       if (saved) {
-        return JSON.parse(saved);
+        try {
+          return JSON.parse(saved) as FontSettings;
+        } catch (e) {
+          console.error('Invalid fontSettings in localStorage:', e);
+        }
       }
     }
     return defaultSettings;
   });
 
   useEffect(() => {
-    localStorage.setItem('fontSettings', JSON.stringify(settings));
+    try {
+      localStorage.setItem('fontSettings', JSON.stringify(settings));
+    } catch (e) {
+      console.error('Failed to save fontSettings to localStorage:', e);
+    }
   }, [settings]);
 
   const setFontFamily = (
@@ -58,21 +98,24 @@ export const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children
     weight?: FontWeight,
     style?: FontStyle
   ) => {
+    if (!font || !font.name || !font.fallback) {
+      console.warn(`Invalid font passed to setFontFamily: ${JSON.stringify(font)}`);
+      return;
+    }
     setSettings(prev => ({
       ...prev,
       [category]: {
-        ...prev[category],
         font,
-        ...(weight && { weight }),
-        ...(style && { style })
-      }
+        weight: weight || prev[category].weight,
+        style: style || prev[category].style,
+      },
     }));
   };
 
   const updateSettings = (newSettings: Partial<FontSettings>) => {
     setSettings(prev => ({
       ...prev,
-      ...newSettings
+      ...newSettings,
     }));
   };
 
@@ -80,9 +123,7 @@ export const FontProvider: React.FC<{ children: React.ReactNode }> = ({ children
     settings,
     updateSettings,
     setFontFamily,
-    fonts: Object.fromEntries(
-      Object.entries(fonts).map(([key, font]) => [key, [font]])
-    )
+    fonts,
   };
 
   return <FontContext.Provider value={value}>{children}</FontContext.Provider>;

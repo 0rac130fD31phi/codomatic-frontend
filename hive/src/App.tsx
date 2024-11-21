@@ -10,21 +10,21 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //  import NeuralNetworkAnimation from './components/NeuralNetworkAnimation';
 import { ThemeProvider } from './contexts/ThemeContext'; // Import the ThemeProvider
 import { FontProvider } from './contexts/FontContext';  // Import the FontProvider
-import LandingPage from './pages/LandingPage2';
+import { LandingPage } from './pages/Landing/LandingPage3';
 import { ThemeSelector } from './components/shared/design/ThemeSelector';
 import { FontSelector } from './components/shared/design/FontSelector';
 import HaiveCommand from './pages/showcase';
-
+import { BaseLayout } from './layouts/BaseLayout';
 const App: React.FC = () => {
   return (
     <ThemeProvider>
       <FontProvider>
         <ThemeSelector />
         <FontSelector />
-        <div>
-          {/*<LandingPage />*/}
-          <HaiveCommand />
-        </div>
+       <BaseLayout>
+          <LandingPage />
+          {/*<HaiveCommand />*/}
+          </BaseLayout>   
        </FontProvider>
     </ThemeProvider>
   );
