@@ -1,4 +1,3 @@
-// src/components/FontSelector.tsx
 import React, { useState } from 'react';
 import { Type, X } from 'lucide-react';
 import { useFont } from '../../../contexts/FontContext';

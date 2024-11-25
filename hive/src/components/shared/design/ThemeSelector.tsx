@@ -1,4 +1,3 @@
-// src/components/ThemeSelector.tsx
 import React, { useState } from 'react';
 import { Settings, X } from 'lucide-react';
 import { useTheme } from '../../../contexts/ThemeContext';
@@ -19,7 +18,7 @@ export const ThemeSelector = () => {
 
       {isOpen && (
         <div className={`
-          p-4 rounded-lg border w-72
+          p-4 rounded-lg border w-72 max-h-96 overflow-y-auto
           ${theme.surfaces.secondary}
           ${theme.border.color}
         `}>

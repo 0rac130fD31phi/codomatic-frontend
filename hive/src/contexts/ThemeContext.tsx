@@ -16,7 +16,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 // Default theme key
-const DEFAULT_THEME = 'cyber'; // Replace with your actual default theme key
+const DEFAULT_THEME = 'cyber'; // Set default theme to 'cyber'
 
 // Theme Provider component
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -71,58 +71,3 @@ export const useTheme = () => {
   }
   return context;
 };
-
-// Theme Selector Component
-export const ThemeSelector: React.FC = () => {
-  const { currentTheme, setTheme } = useTheme();
-  const themeKeys = Object.keys(themes);
-
-  return (
-    <div style={{ position: 'relative', width: '200px', marginTop: '16px' }}>
-      <label htmlFor="theme-selector" style={{ display: 'block', marginBottom: '8px' }}>
-        Select Theme:
-      </label>
-      <div
-        id="theme-selector"
-        style={{
-          maxHeight: '150px', // Set max height for dropdown
-          overflowY: 'auto',  // Enable vertical scrolling
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          padding: '8px',
-          background: '#fff',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-        }}
-      >
-        {themeKeys.map((themeKey) => (
-          <div
-            key={themeKey}
-            onClick={() => setTheme(themeKey)}
-            style={{
-              padding: '8px',
-              cursor: 'pointer',
-              background: currentTheme === themeKey ? '#f0f0f0' : 'transparent',
-              borderRadius: '4px',
-            }}
-          >
-            {themeKey}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// Application Component
-const App: React.FC = () => {
-  return (
-    <ThemeProvider>
-      <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-        <h1>Theme Selector Example</h1>
-        <ThemeSelector />
-      </div>
-    </ThemeProvider>
-  );
-};
-
-export default App;
