@@ -1,31 +1,45 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import Login from './pages/Auth/Login';
+import Signup from './pages/Auth/Signup';
+import Dashboard from './pages/Dashboard';
+import { LandingPage } from './pages/Landing/LandingPage3';
+import ErrorBoundary from './components/ErrorBoundary';
+import { ProtectedRoute } from './components/shared/ProtectedRoute';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { FontProvider } from './contexts/FontContext';
 import { BaseLayout } from './layouts/BaseLayout';
-import Dashboard from './pages/Dashboard';
-import TeamManagement from './pages/TeamManagement';
-import ProjectView from './pages/ProjectView';
-import ProjectChat from './pages/ProjectChat';
-import { LandingPage } from './pages/Landing/LandingPage3';
-
-const App = () => {
+const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <FontProvider>
-        <Router>
-          <BaseLayout>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/team-management" element={<TeamManagement />} />
-              <Route path="/project-view" element={<ProjectView />} />
-              <Route path="/project-chat" element={<ProjectChat />} />
+    <AuthProvider>
+      <ThemeProvider>
+        <FontProvider>
+          <ErrorBoundary>
+            <Router>
+              <Routes>
+                <Route path="/" element={
+                  <BaseLayout>
+                    <LandingPage />
+                  </BaseLayout>
+                } />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-          </BaseLayout>
-        </Router>
-      </FontProvider>
-    </ThemeProvider>
+          </Router>
+        </ErrorBoundary>
+        </FontProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 

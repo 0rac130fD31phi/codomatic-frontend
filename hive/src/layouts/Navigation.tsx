@@ -1,4 +1,3 @@
-// components/landing/Navigation.tsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -66,7 +65,8 @@ export const Navigation: React.FC = () => {
               </a>
             ))}
 
-            <button
+            <a
+              href="/login"
               className={`
                 px-5 py-2 rounded-lg
                 text-sm font-medium
@@ -77,8 +77,23 @@ export const Navigation: React.FC = () => {
                 transition-all
               `}
             >
-              Get Started
-            </button>
+              Login
+            </a>
+
+            <a
+              href="/signup"
+              className={`
+                px-5 py-2 rounded-lg
+                text-sm font-medium
+                ${theme.accent.DEFAULT}
+                hover:${theme.states.hover}
+                text-white
+                shadow-md
+                transition-all
+              `}
+            >
+              Signup
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,7 +145,8 @@ export const Navigation: React.FC = () => {
                 </a>
               ))}
 
-              <button
+              <a
+                href="/login"
                 className={`
                   w-full px-4 py-2 rounded-lg
                   text-sm font-medium
@@ -140,8 +156,22 @@ export const Navigation: React.FC = () => {
                   transition-all
                 `}
               >
-                Get Started
-              </button>
+                Login
+              </a>
+
+              <a
+                href="/signup"
+                className={`
+                  w-full px-4 py-2 rounded-lg
+                  text-sm font-medium
+                  ${theme.accent.DEFAULT}
+                  hover:${theme.states.hover}
+                  text-white
+                  transition-all
+                `}
+              >
+                Signup
+              </a>
             </div>
           </motion.div>
         )}
